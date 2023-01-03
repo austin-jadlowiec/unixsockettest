@@ -1,0 +1,8 @@
+FROM alpine
+WORKDIR /build/
+RUN apk --no-cache add build-base
+COPY sock_cfg.h client.c Makefile /build/
+RUN make all
+VOLUME ["/tmp/xyz/"]
+ENTRYPOINT ["/build/client"]
+CMD ["this", "is", "the", "default"]
