@@ -4,5 +4,5 @@ set -e
 for pod in client server; do
 	cp ./sock_cfg.h $pod/
 	podman image rm $pod || true
-	podman build $pod/ -t $pod
+	podman build $pod/ -t $pod --tls-verify=false
 done
